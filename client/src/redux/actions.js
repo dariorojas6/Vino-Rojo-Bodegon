@@ -26,7 +26,7 @@ export const getFoods = () => {
     return async (dispatch) => {
         try {
             let data = await axios.get(`${(process.env.DB_DEPLOY === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production-e9cf.up.railway.app/')}foods`);       
-            return dispatch({ type: GET_FOODS, payload: data.data });
+            return dispatch({ type: 'GET_FOODS', payload: data.data });
         } catch(e) {
             console.error(e);
         }
