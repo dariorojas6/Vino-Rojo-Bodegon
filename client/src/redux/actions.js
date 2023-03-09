@@ -58,7 +58,7 @@ export function editFood(id, foodEditada) {
   }
 export function postFood(payload){
     return async function(dispatch){
-      await axios.post(`https://vino-rojo-bodegon-production-e9cf.up.railway.app/foods.routes`,payload)
+      await axios.post("https://vino-rojo-bodegon-production-e9cf.up.railway.app/foods",payload)
         dispatch ({
             type: 'POST_FOOD',
             payload
@@ -78,7 +78,7 @@ export function foodTypes(payload) {
 
 export function priceMintoMax() {
     return async function(dispatch){
-        const Ordered = await axios.get(`https://vino-rojo-bodegon-production-e9cf.up.railway.app/filters/priceMinMax`)
+        const Ordered = await axios.get("https://vino-rojo-bodegon-production-e9cf.up.railway.app/filters/priceMinMax")
         dispatch({
             type: "MIN_MAX",
             payload: Ordered.data
@@ -88,7 +88,7 @@ export function priceMintoMax() {
 
 export function priceMaxtoMin(){
     return async function(dispatch){
-        const Ordered = await axios.get(`https://vino-rojo-bodegon-production-e9cf.up.railway.app/filters/priceMaxMin`)
+        const Ordered = await axios.get("https://vino-rojo-bodegon-production-e9cf.up.railway.app/filters/priceMaxMin")
         dispatch({
             type: "MAX_MIN",
             payload: Ordered.data
@@ -162,7 +162,7 @@ export function cartDown(payload){
 
 export function getAbleFood() {
     return async function(dispatch){
-        let data = await axios.get(`https://vino-rojo-bodegon-production-e9cf.up.railway.app/foods/able`)
+        let data = await axios.get("https://vino-rojo-bodegon-production-e9cf.up.railway.app/foods/able")
         dispatch ({
             type: 'GET_ABLE_FOOD',
             payload: data.data
