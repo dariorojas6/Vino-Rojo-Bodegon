@@ -19,13 +19,13 @@ export const CART_DOWN = 'CART_DOWN';
 export const GET_ABLE_FOOD = 'GET_ABLE_FOOD';
 export const VERIFY_ADMIN = 'VERIFY_ADMIN';
 
-//RUTA RAILWAY: ${(process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}foods
+//RUTA RAILWAY: ${(process.env.NODE_ENV=== 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production.up.railway.app/')}foods
 
 const URL = "https://vino-rojo-bodegon-production-cd34.up.railway.app"
 export const getFoods = () => {
     return async (dispatch) => {
         try {
-            let data = await axios.get(`${URL}/foods`);       
+            let data = await axios.get(`${(process.env.NODE_ENV=== 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production-cd34.up.railway.app/')}foods`);       
             return dispatch({ type: GET_FOODS, payload: data.data });
         } catch(e) {
             console.error(e);
@@ -162,7 +162,7 @@ export function cartDown(payload){
 
 export function getAbleFood() {
     return async function(dispatch){
-        let data = await axios.get(`https://vino-rojo-bodegon-production-cd34.up.railway.app/foods/able`)
+        let data = await axios.get(`${(process.env.NODE_ENV=== 'development' ? 'http://localhost:3001/' : 'https://vino-rojo-bodegon-production-cd34.up.railway.app/')}foods/able`)
         dispatch ({
             type: 'GET_ABLE_FOOD',
             payload: data.data
